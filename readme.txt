@@ -43,8 +43,6 @@ Simply install and activate the plugin, then enter your API key on the plugin se
 
 Make sure you entered your API key. Click <a href="http://www.botscout.com/getkey.htm">here</a> to get one.
 
-Also, cURL is required. If you do not have cURL installed on your server you cannot use this plugin.
-
 = Can I use this plugin without an API key? =
 
 Technically, you can make 20 API calls per day to the BotScout API without a key, but this plugin requires it anyway. Its just easier than writing code to track the number of API calls, or catching API errors when the limit is exceeded. It's easy to sign up for a key.
@@ -55,6 +53,10 @@ Technically, you can make 20 API calls per day to the BotScout API without a key
 
 == Changelog ==
 
+= 0.0.3 =
+- use wp_remote_get instead of cURL, let WP decide
+- check for real IP when using Cloudflare
+
 = 0.0.2 =
 - switch to using email and IP instead of email and name
 - added cURL check
@@ -63,6 +65,9 @@ Technically, you can make 20 API calls per day to the BotScout API without a key
 - created
 
 == Upgrade Notice ==
+
+= 0.0.3 =
+- use wp_remote_get instead of cURL, let WP decide; check for real IP when using Cloudflare
 
 = 0.0.2 =
 - switch to using email and IP instead of email and name; added cURL check

@@ -3,7 +3,7 @@
 Plugin Name: BotScout Comment Protection
 Plugin URI: http://www.jimmyscode.com/wordpress/botscout-comment-protection/
 Description: Pass comments through the <a href="http://www.botscout.com/">BotScout</a> API and flag spam comments where appropriate.
-Version: 0.0.2
+Version: 0.0.3
 Author: Jimmy Pe&ntilde;a
 Author URI: http://www.jimmyscode.com/
 License: GPLv2 or later
@@ -13,7 +13,7 @@ if (!defined('BSCP_PLUGIN_NAME')) {
 	// plugin constants
 	define('BSCP_MIN_WP_VERSION', '3.5');
 	define('BSCP_MIN_PHP_VERSION', '5.2');
-	define('BSCP_VERSION', '0.0.2');
+	define('BSCP_VERSION', '0.0.3');
 	define('BSCP_PLUGIN_NAME', 'BotScout Comment Protection');
 	define('BSCP_SLUG', 'botscout-comment-protection');
 	define('BSCP_LOCAL', 'bscp');
@@ -66,13 +66,6 @@ function bscp_check_versions() {
 				unset($_GET['activate']);
 			}
 		}
-		if (!function_exists('curl_version')) { // CURL not present
-			deactivate_plugins(plugin_basename(__FILE__));
-			add_action('admin_notices', 'bscp_show_curl_notice');	
-			if (isset($_GET['activate'])) {
-				unset($_GET['activate']);
-			}
-		}
 	}
 }
 function bscp_check_version_on_activation() {
@@ -83,10 +76,6 @@ function bscp_check_version_on_activation() {
 	} elseif (bscp_compare_versions(phpversion(), BSCP_MIN_PHP_VERSION)) { // PHP version too low
 		deactivate_plugins(plugin_basename(__FILE__));
 		add_action('admin_notices', 'bscp_show_php_notice');
-	}
-	if (!function_exists('curl_version')) {
-		deactivate_plugins(plugin_basename(__FILE__));
-		add_action('admin_notices', 'bscp_show_curl_notice');	
 	}
 }
 function bscp_compare_versions($versiontobechecked, $minversion) {
@@ -99,9 +88,6 @@ function bscp_show_wp_notice() {
 }
 function bscp_show_php_notice() {
 	echo '<div id="message" class="error">' . BSCP_PLUGIN_NAME . ' ' . sprintf(__('requires PHP version %s or higher. You must update WordPress before you can use this plugin.', bscp_get_local()), BSCP_MIN_PHP_VERSION) . '</div>';
-}
-function bscp_show_curl_notice() {
-	echo '<div id="message" class="error">' . BSCP_PLUGIN_NAME . ' ' . sprintf(__('requires cURL. Please enable or install it, otherwise you cannot use this plugin.', bscp_get_local()), BSCP_MIN_PHP_VERSION) . '</div>';
 }
 // validation function
 function bscp_validation($input) {
@@ -172,23 +158,22 @@ function bscp_plugin_menu() {
 // http://codex.wordpress.org/Plugin_API/Filter_Reference/preprocess_comment
 // http://blog.datumbox.com/how-to-build-an-intelligent-antispam-wordpress-plugin/ 
 // http://marketpress.com/2013/mini-plugin-blocking-known-spam-ips-in-wordpress/
+// http://stackoverflow.com/questions/14985518/cloudflare-and-logging-visitor-ips-via-in-php
 add_action('preprocess_comment', 'bscp_check_comment');
 function bscp_check_comment($commentdata) {
-	if (function_exists('curl_version')) {
-		$options = bscp_getpluginoptions();
-		$enabled = (bool)$options[BSCP_DEFAULT_ENABLED_NAME];
+	$options = bscp_getpluginoptions();
+	$enabled = (bool)$options[BSCP_DEFAULT_ENABLED_NAME];
 
-		if ($enabled) {
-			$bs_apikey = sanitize_text_field($options[BSCP_DEFAULT_APIKEY_NAME]);
-			if ($bs_apikey) {
-			  $ip = '';
-				if ($_SERVER['REMOTE_ADDR']) {
-					$ip = preg_replace( '/[^0-9a-fA-F:., ]/', '', $_SERVER['REMOTE_ADDR'] );
-				}
-				$isspam = bscp_isspam(bscp_checkifset('comment_author_email', '', $commentdata), $ip, $bs_apikey);
-				if ($isspam) {
-					add_filter('pre_comment_approved', 'bscp_return_spam');
-				}
+	if ($enabled) {
+		$bs_apikey = sanitize_text_field($options[BSCP_DEFAULT_APIKEY_NAME]);
+		if ($bs_apikey) {
+		  $ip = '';
+			if ($_SERVER['REMOTE_ADDR']) {
+				$ip = preg_replace( '/[^0-9a-fA-F:., ]/', '', (isset($_SERVER['HTTP_CF_CONNECTING_IP']) ? $_SERVER['HTTP_CF_CONNECTING_IP'] : $_SERVER['REMOTE_ADDR'] ));
+			}
+			$isspam = bscp_isspam(bscp_checkifset('comment_author_email', '', $commentdata), $ip, $bs_apikey);
+			if ($isspam) {
+				add_filter('pre_comment_approved', 'bscp_return_spam');
 			}
 		}
 	}
@@ -227,12 +212,11 @@ function bscp_isspam($email, $ip, $apiKey) {
 } // end botscout function
 
 function bscp_checkBotScout($url) {
-  $ch = curl_init($url);
-  curl_setopt($ch, CURLOPT_HEADER, 0);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  $returnedvalues = curl_exec($ch);
-  curl_close($ch);
-  return $returnedvalues;
+	// http://planetozh.com/blog/2009/08/how-to-make-http-requests-with-wordpress/
+	$resp = wp_remote_get($url);
+	if ($resp['response']['message'] === "OK") {
+		return $resp['body'];
+	}
 }
 
 	// show admin messages to plugin user
