@@ -3,7 +3,7 @@
 Plugin Name: BotScout Comment Protection
 Plugin URI: http://www.jimmyscode.com/wordpress/botscout-comment-protection/
 Description: Pass comments through the <a href="http://www.botscout.com/">BotScout</a> API and flag spam comments where appropriate.
-Version: 0.0.3
+Version: 0.0.4
 Author: Jimmy Pe&ntilde;a
 Author URI: http://www.jimmyscode.com/
 License: GPLv2 or later
@@ -13,7 +13,7 @@ if (!defined('BSCP_PLUGIN_NAME')) {
 	// plugin constants
 	define('BSCP_MIN_WP_VERSION', '3.5');
 	define('BSCP_MIN_PHP_VERSION', '5.2');
-	define('BSCP_VERSION', '0.0.3');
+	define('BSCP_VERSION', '0.0.4');
 	define('BSCP_PLUGIN_NAME', 'BotScout Comment Protection');
 	define('BSCP_SLUG', 'botscout-comment-protection');
 	define('BSCP_LOCAL', 'bscp');

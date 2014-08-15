@@ -20,6 +20,14 @@ Requires BotScout API key which you can acquire <a href="http://www.botscout.com
 
 Disclaimer: This plugin is not affiliated with or endorsed by BotScout.
 
+<h3>If you need help with this plugin</h3>
+
+If this plugin breaks your site or just flat out does not work, please go to <a href="http://wordpress.org/plugins/botscout-comment-protection/#compatibility">Compatibility</a> and click "Broken" after verifying your WordPress version and the version of the plugin you are using.
+
+Then, create a thread in the <a href="http://wordpress.org/support/plugin/botscout-comment-protection">Support</a> forum with a description of the issue. Make sure you are using the latest version of WordPress and the plugin before reporting issues, to be sure that the issue is with the current version and not with an older version where the issue may have already been fixed.
+
+<strong>Please do not use the <a href="http://wordpress.org/support/view/plugin-reviews/botscout-comment-protection">Reviews</a> section to report issues or request new features.</strong>
+
 == Installation ==
 
 1. Upload plugin file through the WordPress interface.
@@ -53,6 +61,9 @@ Technically, you can make 20 API calls per day to the BotScout API without a key
 
 == Changelog ==
 
+= 0.0.4 =
+- updated .pot file and readme
+
 = 0.0.3 =
 - use wp_remote_get instead of cURL, let WP decide
 - check for real IP when using Cloudflare
@@ -65,6 +76,9 @@ Technically, you can make 20 API calls per day to the BotScout API without a key
 - created
 
 == Upgrade Notice ==
+
+= 0.0.4 =
+- updated .pot file and readme
 
 = 0.0.3 =
 - use wp_remote_get instead of cURL, let WP decide; check for real IP when using Cloudflare

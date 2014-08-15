@@ -1,0 +1,172 @@
+# Copyright (C) 2014 BotScout Comment Protection
+# This file is distributed under the same license as the BotScout Comment Protection package.
+msgid ""
+msgstr ""
+"Project-Id-Version: BotScout Comment Protection 0.0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/botscout-comment-protection\n"
+"POT-Creation-Date: 2014-08-14 16:34:11+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: botscout-comment-protection.php:33
+msgid "Do not access this file directly."
+msgstr ""
+
+#: botscout-comment-protection.php:87
+msgid ""
+"requires WordPress version %s or higher. You must update WordPress before "
+"you can use this plugin."
+msgstr ""
+
+#: botscout-comment-protection.php:90
+msgid ""
+"requires PHP version %s or higher. You must update WordPress before you can "
+"use this plugin."
+msgstr ""
+
+#: botscout-comment-protection.php:113
+msgid "You do not have sufficient permission to access this page"
+msgstr ""
+
+#: botscout-comment-protection.php:117
+msgid " by "
+msgstr ""
+
+#: botscout-comment-protection.php:118
+msgid "You are running plugin version"
+msgstr ""
+
+#: botscout-comment-protection.php:123
+msgid "Settings"
+msgstr ""
+
+#: botscout-comment-protection.php:124 botscout-comment-protection.php:146
+msgid "Support"
+msgstr ""
+
+#: botscout-comment-protection.php:132
+msgid "Plugin Settings"
+msgstr ""
+
+#: botscout-comment-protection.php:134 botscout-comment-protection.php:137
+msgid "Is plugin enabled? Uncheck this to turn it off temporarily."
+msgstr ""
+
+#: botscout-comment-protection.php:134
+msgid "Plugin enabled?"
+msgstr ""
+
+#: botscout-comment-protection.php:139
+msgid "Enter your BotScout API key here."
+msgstr ""
+
+#: botscout-comment-protection.php:142
+msgid ""
+"Put your BotScout API key here. <a href=\"http://www.botscout.com/getkey.htm"
+"\">Register</a> if you do not have one."
+msgstr ""
+
+#: botscout-comment-protection.php:149
+msgid ""
+"Disclaimer: This plugin is not affiliated with or endorsed by BotScout. If "
+"you use this plugin please send them a <a href=\"http://www.botscout.com/"
+"donate.htm\">donation<a>."
+msgstr ""
+
+#: botscout-comment-protection.php:236
+msgid "is currently disabled."
+msgstr ""
+
+#: botscout-comment-protection.php:239
+msgid ""
+"API Key is missing. Please enter yours or <a href=\"http://www.botscout.com/"
+"getkey.htm\">register</a> for one."
+msgstr ""
+
+#: botscout-comment-protection.php:281
+msgid "<a href=\"http://wordpress.org/support/plugin/%s\">Support</a>"
+msgstr ""
+
+#: botscout-comment-protection.php:282 botscout-comment-protection.php:337
+msgid "<a href=\"http://wordpress.org/extend/plugins/%s/\">Documentation</a>"
+msgstr ""
+
+#: botscout-comment-protection.php:283
+msgid "<a href=\"http://wordpress.org/plugins/%s/faq/\">FAQ</a>"
+msgstr ""
+
+#: botscout-comment-protection.php:330
+msgid "<a href=\"options-general.php?page=%s\">Settings</a>"
+msgstr ""
+
+#: botscout-comment-protection.php:335
+msgid "Do you need help with this plugin? Check out the following resources:"
+msgstr ""
+
+#: botscout-comment-protection.php:338
+msgid "<a href=\"http://wordpress.org/plugins/%s/faq/\">FAQ</a><br />"
+msgstr ""
+
+#: botscout-comment-protection.php:339
+msgid ""
+"<a href=\"http://wordpress.org/support/plugin/%s\">Support Forum</a><br />"
+msgstr ""
+
+#: botscout-comment-protection.php:340
+msgid ""
+"<a href=\"http://www.jimmyscode.com/wordpress/%s\">Plugin Homepage / Demo</"
+"a><br />"
+msgstr ""
+
+#: botscout-comment-protection.php:341
+msgid ""
+"<a href=\"http://wordpress.org/extend/plugins/%s/developers/\">Development</"
+"a><br />"
+msgstr ""
+
+#: botscout-comment-protection.php:342
+msgid ""
+"<a href=\"http://wordpress.org/plugins/%s/changelog/\">Changelog</a><br />"
+msgstr ""
+
+#: botscout-comment-protection.php:345
+msgid ""
+"If you like this plugin, please <a href=\"http://wordpress.org/support/view/"
+"plugin-reviews/%s/\">rate it on WordPress.org</a>"
+msgstr ""
+
+#: botscout-comment-protection.php:346
+msgid ""
+" and click the <a href=\"http://wordpress.org/plugins/%s/#compatibility"
+"\">Works</a> button. "
+msgstr ""
+
+#: botscout-comment-protection.php:348
+msgid "Your donations encourage further development and support. "
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "BotScout Comment Protection"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.jimmyscode.com/wordpress/botscout-comment-protection/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Pass comments through the <a href=\"http://www.botscout.com/\">BotScout</a> "
+"API and flag spam comments where appropriate."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Jimmy Pe&ntilde;a"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.jimmyscode.com/"
+msgstr ""
